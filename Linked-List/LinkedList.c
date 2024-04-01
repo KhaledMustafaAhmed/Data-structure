@@ -31,6 +31,7 @@ void Insert_atPosition_single_node(_single_node_t *node, int position);
 void Delete_first_Node(_single_node_t **nodePtr);
 
 void Delete_last_Node(_single_node_t **nodePtr);
+void K_reverse_linkedlist(_single_node_t **nodePtr);
 
 int main(void)
 {
@@ -53,9 +54,9 @@ int main(void)
         tail = thirdNode;
     }
     Display_single_LinkedList(head);
-    Delete_last_Node(&head);
-    printf("===================\n");
-    Display_single_LinkedList(head);
+    reverse_linkedlist(head);
+    printf("=========================\n");
+    Display_single_LinkedList(&head);
     return 0;
 }
 _single_node_t* Create_new_single_node(void)
@@ -176,4 +177,20 @@ void Delete_last_Node(_single_node_t **nodePtr)
     {
         printf("Invalid node");
     }
+}
+
+/* pass the head pointer */
+void K_reverse_linkedlist(_single_node_t **nodePtr)
+{
+    _single_node_t *prev = NULL;
+    _single_node_t *current = *nodePtr;
+    _single_node_t *nextPtr = NULL;
+    while (current != NULL)
+    {
+        nextPtr = current->next;
+        current->next = prev;
+        prev = current;
+        current = nextPtr;
+    }
+    *nodePtr = prev; // Update the head pointer to the new head
 }
