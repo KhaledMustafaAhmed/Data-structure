@@ -12,26 +12,38 @@ typedef struct node{
     struct node *next;
 }_single_node_t;
 
+/* 
+Doubly LinkedList:
+-------------------------------------------------
+|  _node_t *previous  | Data |  _node_t *next   |
+-------------------------------------------------
+*/
 /* initialize head and tail Global pointer to know the start and end of linkedlist */
 _single_node_t *head = NULL;
 _single_node_t *tail = NULL;
 int size_of_linkedlist = 0;
+/* Node type contain Data and pointer of type _single_node_t point to next node and prev node */
+typedef struct node{
+    int data;
+    struct node *next;
+    struct node *prev;
+}_Double_node_t;
+
+/* initialize head and tail Global pointer to know the start and end of linkedlist */
+_Double_node_t *head = NULL;
 
 
+/* _single_node_t APIs */
 _single_node_t* Create_new_single_node(void);
-
-void Display_single_LinkedList(_single_node_t* node);
-
 _single_node_t * Insert_atbegain_single_Node(_single_node_t *node);
-
+void Display_single_LinkedList(_single_node_t* node);
 void Insert_atEnd_single_Node(_single_node_t *node);
-
 void Insert_atPosition_single_node(_single_node_t *node, int position);
-
 void Delete_first_Node(_single_node_t **nodePtr);
-
 void Delete_last_Node(_single_node_t **nodePtr);
 void K_reverse_linkedlist(_single_node_t **nodePtr);
+/* _Double_node_t APIs */
+_Double_node_t * Create_double_node(_Double_node_t *headNode);
 
 int main(void)
 {
@@ -178,7 +190,6 @@ void Delete_last_Node(_single_node_t **nodePtr)
         printf("Invalid node");
     }
 }
-
 /* pass the head pointer */
 void K_reverse_linkedlist(_single_node_t **nodePtr)
 {
@@ -193,4 +204,14 @@ void K_reverse_linkedlist(_single_node_t **nodePtr)
         current = nextPtr;
     }
     *nodePtr = prev; // Update the head pointer to the new head
+}
+
+_Double_node_t * Create_double_node(_Double_node_t *headNode)
+{
+    _Double_node_t * newNode = (_Double_node_t *)malloc(sizeof(_Double_node_t));
+    printf("Enter Data into your new node: ");
+    scanf("%d",&newNode->data);
+    newNode->next = NULL;
+    newNode->prev = NULL;
+    return newNode;
 }
