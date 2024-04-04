@@ -15,6 +15,9 @@ the array to allocate memory for the stack. There are two ways
 to implement a stack: based on arrays or based on linked lists.
 
 - Stack based on array:
+```c
+#define StackEntry   int
+```
 ``` c
 typedef struct stack{
 int top;
