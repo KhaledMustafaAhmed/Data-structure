@@ -16,7 +16,7 @@ to implement a stack: based on arrays or based on linked lists.
 
 - Stack based on array:
 ```c
-#define StackEntry   int
+typedef StackEntry   int
 ```
 ``` c
 typedef struct stack{
